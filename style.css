@@ -293,4 +293,15 @@ main{
   font-weight: 600;
 }
 
+/* Nav tailoring */
+.nav-links a.is-hidden{
+  display:none;
+}
+
+/* If you want "fade" instead of hide, we'll use this class */
+.nav-links a.is-faded{
+  opacity:.45;
+  pointer-events:none;
+}
+
 

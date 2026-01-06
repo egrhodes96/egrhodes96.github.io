@@ -1,12 +1,13 @@
 :root{
-  --bg:#0b1020;
-  --card:#0f1630;
-  --text:#e8ecf5;
-  --muted:#b6bfd6;
-  --accent:#7cd4ff;
-  --border:rgba(255,255,255,.12);
-  --shadow:0 10px 26px rgba(0,0,0,.35);
-  --radius:16px;
+  /* Soft Sage + Teal */
+  --bg:#f3f7f4;          /* pale sage */
+  --card:#ffffff;        /* white */
+  --text:#0f172a;        /* slate */
+  --muted:#475569;       /* muted slate */
+  --accent:#0f766e;      /* teal */
+  --accent2:#115e59;     /* deeper teal */
+  --border:rgba(15,23,42,.14);
+  --shadow:0 10px 26px rgba(15,23,42,.08);
   --max:1050px;
 }
 
@@ -15,20 +16,30 @@ html,body{margin:0;padding:0}
 
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 800px at 10% 0%, #142050 0%, var(--bg) 55%);
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(15,118,110,.10) 0%, rgba(243,247,244,1) 55%),
+    var(--bg);
   color:var(--text);
-  line-height:1.55;
+  line-height:1.65;
 }
 
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 
-.header{
+main{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:34px 18px 70px;
+}
+
+/* Header / nav */
+.site-header{
   position:sticky;
   top:0;
-  backdrop-filter:blur(10px);
-  background:rgba(11,16,32,.7);
-  border-bottom:1px solid var(--border);
+  z-index:10;
+  background: rgba(243,247,244,.82);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(15,23,42,.10);
 }
 
 .nav{
@@ -42,169 +53,139 @@ a:hover{text-decoration:underline}
   gap:12px;
 }
 
-.brand{
-  font-weight:800;
+.logo{
+  font-weight:850;
   color:var(--text);
   letter-spacing:.2px;
 }
 
-.links{
+.nav-links{
   display:flex;
   gap:14px;
   flex-wrap:wrap;
 }
 
-.links a{
+.nav-links a{
   color:var(--muted);
 }
-
-.links a:hover{
+.nav-links a:hover{
   color:var(--text);
 }
 
-main{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:34px 18px 70px;
+/* Sections */
+.section{margin-top:34px}
+.section h2{
+  margin:0 0 10px;
+  font-size:1.35rem;
+  letter-spacing:.2px;
+}
+.section-lede{
+  margin:0 0 14px;
+  color:var(--muted);
+  max-width:90ch;
 }
 
+/* Hero */
 .hero{
-  background:rgba(15,22,48,.8);
+  background:var(--card);
   border:1px solid var(--border);
-  border-radius:var(--radius);
   box-shadow:var(--shadow);
-  padding:26px;
+  padding:30px;
 }
 
+.hero-inner{max-width:90ch}
 .hero h1{
-  margin:0 0 8px;
-  font-size:clamp(1.9rem,3vw,3rem);
+  margin:0 0 10px;
+  font-size:clamp(2rem, 3.2vw, 3rem);
+  line-height:1.1;
 }
-
 .hero p{
   margin:0;
   color:var(--muted);
-  max-width:75ch;
 }
 
-.badges{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:14px;
+/* Buttons */
+.hero-cta{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+
+.button{
+  display:inline-block;
+  padding:10px 14px;
+  font-weight:700;
+  border:1px solid rgba(15,23,42,.12);
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+}
+.button:hover{ text-decoration:none; filter:brightness(0.97); }
+
+.button.secondary{
+  background: transparent;
+  color: var(--accent2);
+  border: 1px solid rgba(15,23,42,.20);
 }
 
-.badge{
-  font-size:13px;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.04);
-}
-
-.section{
-  margin-top:22px;
-}
-
-.section h2{
-  margin:0 0 10px;
-  font-size:1.25rem;
-}
-
+/* Cards */
 .card{
-  background:rgba(15,22,48,.8);
+  background:var(--card);
   border:1px solid var(--border);
-  border-radius:var(--radius);
   box-shadow:var(--shadow);
-  padding:20px;
+  padding:18px;
 }
 
+/* Lists */
+.beyond-list{margin:10px 0 0; padding-left:18px}
+.beyond-list li{margin:6px 0}
+
+/* Gallery (square edges, lighter captions) */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:16px;
   margin-top:14px;
 }
 
-figure{
+.gallery figure{
   margin:0;
-  overflow:hidden;
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  background:rgba(15,22,48,.7);
+  background: transparent;
+  border:none;
+  overflow: visible; /* no tile clipping */
 }
 
-figure img{
+.gallery img{
   width:100%;
-  height:240px;
+  height:280px;
   object-fit:cover;
   display:block;
+  border-radius:0; /* square edges */
+  outline: 1px solid rgba(15,23,42,.12); /* subtle photo edge */
+  outline-offset: -1px;
 }
 
-figcaption{
-  padding:10px 12px;
+.gallery figcaption{
+  padding:10px 0 0;
   color:var(--muted);
   font-size:.95rem;
+  line-height:1.35;
 }
 
+/* Origin image: show full photo and keep it ~4 inches tall */
+.gallery .gallery-feature img.origin-photo{
+  width:auto !important;
+  max-height:420px !important;
+  height:auto !important;
+  object-fit:contain !important;
+  outline: 1px solid rgba(15,23,42,.12);
+  outline-offset: -1px;
+}
+
+/* Footer */
 .footer{
-  margin-top:26px;
-  padding-top:16px;
-  border-top:1px solid var(--border);
+  margin-top:34px;
+  padding-top:18px;
+  border-top:1px solid rgba(15,23,42,.12);
   color:var(--muted);
   font-size:.95rem;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
 }
 
-/* --- Gallery layout --- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.gallery figure {
-  margin: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.04); /* optional */
-}
-
-.gallery img {
-  width: 100%;
-  height: 260px;         /* key: forces consistent tile height */
-  object-fit: cover;     /* key: crops instead of stretching */
-  display: block;
-}
-
-.gallery figcaption {
-  padding: 10px 12px 12px;
-  font-size: 0.95rem;
-  line-height: 1.35;
-  opacity: 0.9;
-}
-
-
-/* Make this one figure behave like a normal, flexible image block */
-.gallery-feature {
-  overflow: visible !important; /* stops container cropping */
-}
-
-/* Featured image: override gallery cropping rules */
-.gallery .gallery-feature img {
-  width: auto !important;         /* prevent full-width stretch */
-  max-height: 420px !important;   /* ~4 inches on most screens */
-  height: auto !important;        /* cancel fixed tile height */
-  object-fit: contain !important; /* no cropping */
-  display: block;
-  margin: 0 auto;
-}
-
-.gallery .gallery-feature {
-  overflow: visible !important;
-}
 
 

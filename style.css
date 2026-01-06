@@ -157,8 +157,6 @@ main{
   object-fit:cover;
   display:block;
   border-radius:0; /* square edges */
-  outline: 1px solid rgba(15,23,42,.12); /* subtle photo edge */
-  outline-offset: -1px;
 }
 
 .gallery figcaption{
@@ -187,5 +185,84 @@ main{
   font-size:.95rem;
 }
 
+/* --- Modern outdoorsy polish --- */
+
+/* Slightly richer palette + softer contrast */
+:root{
+  --bg:#f4f6f1;           /* soft sage paper */
+  --text:#0b1220;
+  --muted:#415263;
+  --accent:#0b6b5e;       /* deep teal */
+  --accent2:#0a4a3f;      /* forest */
+  --shadow:0 12px 30px rgba(15,23,42,.10);
+}
+
+/* Modern type rhythm */
+.section h2{
+  font-size: 1.55rem;
+  letter-spacing: .15px;
+}
+.section-lede{
+  font-size: 1.05rem;
+}
+
+/* Make hero feel less boxy */
+.hero{
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 34px 0 10px;
+  background: transparent;
+}
+.hero-inner{
+  padding: 18px 20px;
+  background: rgba(255,255,255,.70);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,.08);
+}
+
+/* Light, modern cards */
+.card{
+  border: 1px solid rgba(15,23,42,.10);
+  border-radius: 14px;
+}
+
+/* Photos: modern, clean, and slightly lively */
+.gallery img{
+  border-radius: 10px;              /* NOT button-like; just soft */
+  outline: none !important;          /* remove any border/outline */
+  box-shadow: 0 10px 24px rgba(15,23,42,.10);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.gallery figure:hover img{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(15,23,42,.14);
+}
+
+/* Make captions feel editorial */
+.gallery figcaption{
+  font-size: .95rem;
+  color: var(--muted);
+  padding-top: 8px;
+}
+
+/* Buttons: more modern */
+.button{
+  border-radius: 999px;
+  padding: 10px 16px;
+}
+.button.secondary{
+  background: rgba(255,255,255,.70);
+}
+
+/* Nav: slightly tighter + modern */
+.site-header{
+  border-bottom: 1px solid rgba(15,23,42,.08);
+}
+.nav-links a{
+  font-weight: 600;
+}
 
 

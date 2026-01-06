@@ -193,13 +193,15 @@ figcaption{
   overflow: visible !important; /* stops container cropping */
 }
 
-.gallery-feature img {
-  width: auto;              /* don’t stretch to full width */
-  max-height: 420px;        /* ~4 inches on most screens */
-  height: auto !important;
-  object-fit: contain !important;
+/* Featured image: override gallery cropping rules */
+.gallery .gallery-feature img {
+  width: auto !important;         /* prevent full-width stretch */
+  max-height: 420px !important;   /* ~4 inches on most screens */
+  height: auto !important;        /* cancel fixed tile height */
+  object-fit: contain !important; /* no cropping */
   display: block;
-  margin: 0 auto;           /* centers the image */
+  margin: 0 auto;
 }
+
 
 

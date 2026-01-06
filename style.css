@@ -105,30 +105,34 @@ main{
 .nav-links a.is-faded{ opacity:.45; pointer-events:none; }
 
 /* Hero */
-.hero{
-  padding: 26px 0 6px;
+/* ==========================
+   HERO = editorial color block
+   ========================== */
+
+.hero {
+  margin: 0 -18px;
+  padding: 48px 18px 36px;
+  background: var(--accent);
 }
 
-.hero-inner{
-  max-width: 92ch;
-  padding: 18px 20px;
-  background: var(--card);
-  border: 1px solid rgba(15,23,42,.08);
-  box-shadow: var(--shadow);
-  border-radius: var(--radius);
+.hero h1 {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #000;
 }
 
-.hero h1{
-  margin: 0 0 10px;
-  font-size: clamp(2rem, 3.2vw, 3rem);
-  line-height: 1.05;
-  letter-spacing: -.3px;
+body[data-track-theme="research"] .hero h1 {
+  color: #fff;
 }
 
-.hero p{
-  margin: 0;
-  color: var(--muted);
+.hero p {
+  max-width: 70ch;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: inherit;
 }
+
 
 /* Toggle */
 .track-toggle{
@@ -490,4 +494,100 @@ body{
   box-shadow: 0 10px 26px rgba(15,23,42,.10) !important;
 }
 
+/* ==========================
+   RESET: remove buttony / card look
+   ========================== */
 
+.hero-inner,
+.card,
+.skill-card,
+.track-toggle {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Kill gradients everywhere */
+* {
+  background-image: none !important;
+}
+/* ==========================
+   THEME PALETTES (flat + bold)
+   ========================== */
+
+/* Teaching: bright, optimistic */
+body[data-track-theme="teaching"] {
+  --bg: #fffdf7;
+  --text: #111111;
+  --muted: #4b4b4b;
+
+  --accent: #ffd400;     /* bold yellow */
+  --accent-dark: #c9a400;
+}
+
+/* Research: darker, cooler */
+body[data-track-theme="research"] {
+  --bg: #f6f8ff;
+  --text: #0b1020;
+  --muted: #3a3f55;
+
+  --accent: #1f4ed8;     /* strong blue */
+  --accent-dark: #3b2fa3; /* blue-purple */
+}
+
+body {
+  background: var(--bg) !important;
+  color: var(--text);
+}
+
+/* ==========================
+   SECTIONS = clean panels
+   ========================== */
+
+.section {
+  margin-top: 56px;
+  padding-top: 12px;
+  border-top: 4px solid var(--accent);
+}
+
+.section h2 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-lede {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* ==========================
+   IMAGES = sharp + intentional
+   ========================== */
+
+.gallery img {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 2px solid var(--accent);
+}
+
+.gallery figcaption {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+strong {
+  color: var(--accent-dark);
+  font-weight: 900;
+}
+
+a {
+  color: var(--accent-dark);
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}

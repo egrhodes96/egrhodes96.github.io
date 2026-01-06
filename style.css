@@ -315,4 +315,131 @@ main{
   font-size: .95rem;
 }
 
+/* ==========================
+   EXTRA MODERN: banners + bold accents
+   ========================== */
+
+/* Add “neon” highlight colors per track */
+body[data-track-theme="teaching"]{
+  --pop: #ffd60a;     /* brighter yellow pop */
+  --pop2:#ffb703;     /* golden */
+  --ink:#1b1300;      /* warm dark for contrast in badges */
+}
+
+body[data-track-theme="research"]{
+  --pop: #7c3aed;     /* purple pop */
+  --pop2:#3b82f6;     /* bright ocean */
+  --ink:#0b1020;
+}
+
+/* Stronger background vibe */
+body{
+  background:
+    radial-gradient(900px 520px at 12% 0%, var(--tint) 0%, rgba(255,255,255,0) 58%),
+    linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0)),
+    var(--bg);
+}
+
+/* HERO: make it feel like a “banner” */
+.hero-inner{
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+/* Decorative shapes behind hero content */
+.hero-decor{
+  position:absolute;
+  inset:-40% -30% auto -30%;
+  height: 260px;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(120px 120px at 18% 40%, rgba(255,214,10,.55) 0%, rgba(255,214,10,0) 60%),
+    radial-gradient(170px 170px at 55% 20%, rgba(124,58,237,.28) 0%, rgba(124,58,237,0) 60%),
+    radial-gradient(260px 260px at 90% 60%, rgba(37,99,235,.22) 0%, rgba(37,99,235,0) 60%),
+    linear-gradient(90deg, rgba(255,214,10,.14), rgba(124,58,237,.10));
+  filter: blur(2px);
+  transform: rotate(-8deg);
+  opacity: .95;
+}
+
+/* Ensure hero content stays above decor */
+.hero-inner > *:not(.hero-decor){
+  position: relative;
+  z-index: 1;
+}
+
+/* Headline underline = bold stripe that changes with theme */
+.hero h1{
+  display:inline-block;
+  padding-bottom: 6px;
+  background:
+    linear-gradient(transparent 70%, rgba(255,255,255,0) 70%),
+    linear-gradient(90deg, var(--pop), var(--accent2));
+  background-size: 100% 100%, 100% 6px;
+  background-repeat: no-repeat;
+  background-position: 0 100%, 0 100%;
+}
+
+/* Toggle active state more “designed” */
+.track-toggle{
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(15,23,42,.10);
+  box-shadow: 0 10px 26px rgba(15,23,42,.10);
+}
+.track-btn.is-active{
+  background: linear-gradient(90deg, var(--pop), var(--accent2));
+}
+
+/* Buttons: brighter gradient, sharper */
+.button{
+  background: linear-gradient(90deg, var(--pop), var(--accent2));
+  box-shadow: 0 16px 36px rgba(15,23,42,.16);
+}
+
+/* Section title bar: thicker + gradient */
+.section h2::before{
+  width: 6px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--pop), var(--accent2));
+}
+
+/* Add subtle “section banners” */
+.section{
+  position: relative;
+}
+
+.section::before{
+  content:"";
+  position:absolute;
+  left:-12px;
+  right:-12px;
+  top:-6px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(15,23,42,0), rgba(15,23,42,.10), rgba(15,23,42,0));
+}
+
+/* Gallery: slightly sharper corners + highlight on hover */
+.gallery img{
+  border-radius: 10px;
+}
+.gallery figure:hover img{
+  box-shadow: 0 26px 64px rgba(15,23,42,.20);
+}
+
+/* Skills cards: add a thin top accent strip */
+.skill-card{
+  position: relative;
+  overflow: hidden;
+}
+.skill-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:4px;
+  background: linear-gradient(90deg, var(--pop), var(--accent2));
+}
 

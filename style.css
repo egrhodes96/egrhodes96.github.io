@@ -443,3 +443,64 @@ body{
   background: linear-gradient(90deg, var(--pop), var(--accent2));
 }
 
+/* Section-specific banner blocks */
+#teaching, #outdoor, #beyond, #resume{
+  background: linear-gradient(180deg, rgba(255,214,10,.10), rgba(255,255,255,0));
+  padding: 18px 18px 0;
+  border-radius: 18px;
+}
+
+#research, #skills{
+  background: linear-gradient(180deg, rgba(124,58,237,.12), rgba(255,255,255,0));
+  padding: 18px 18px 0;
+  border-radius: 18px;
+}
+
+/* Big bold hero background wash */
+.hero-inner::before{
+  content:"";
+  position:absolute;
+  left: -18px;
+  right: -18px;
+  top: -10px;
+  bottom: -16px;
+
+  /* this creates the bold background per theme */
+  background:
+    radial-gradient(600px 260px at 18% 25%, color-mix(in srgb, var(--pop) 35%, transparent) 0%, transparent 60%),
+    radial-gradient(520px 260px at 70% 0%, color-mix(in srgb, var(--accent2) 22%, transparent) 0%, transparent 60%),
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--pop) 18%, transparent),
+      color-mix(in srgb, var(--accent2) 14%, transparent)
+    );
+
+  border-radius: 18px;
+  z-index: 0;
+}
+
+/* Keep hero content above that background */
+.hero-inner > *{
+  position: relative;
+  z-index: 1;
+}
+/* Title highlight: chunky background (not a thin line) */
+.hero h1{
+  display: inline;
+  line-height: 1.1;
+  padding: 0 .15em;
+  background:
+    linear-gradient(
+      transparent 58%,
+      color-mix(in srgb, var(--pop) 55%, transparent) 58%,
+      color-mix(in srgb, var(--pop) 55%, transparent) 92%,
+      transparent 92%
+    );
+  border-radius: 10px;
+}
+.track-toggle{
+  background: rgba(255,255,255,.55) !important;
+  border: 1px solid rgba(15,23,42,.10) !important;
+  box-shadow: 0 10px 26px rgba(15,23,42,.10) !important;
+}
+
+

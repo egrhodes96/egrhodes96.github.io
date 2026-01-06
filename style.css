@@ -187,13 +187,19 @@ figcaption{
   opacity: 0.9;
 }
 
-/* Special handling for childhood origin photo */
-.origin-photo {
+
+/* Make this one figure behave like a normal, flexible image block */
+.gallery-feature {
+  overflow: visible !important; /* stops container cropping */
+}
+
+/* Override any gallery-wide fixed sizing */
+.gallery-feature img.origin-photo {
   width: 100%;
-  max-width: 600px;     /* controls how large it gets */
-  height: auto;         /* prevents cropping */
-  object-fit: contain;  /* key fix */
+  height: auto !important;        /* cancels fixed height */
+  max-height: none !important;    /* cancels max-height constraints */
+  object-fit: contain !important; /* cancels object-fit: cover */
+  object-position: center;
   display: block;
-  margin: 0 auto;
 }
 

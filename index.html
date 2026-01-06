@@ -310,6 +310,8 @@
 
   const trackButtons = Array.from(document.querySelectorAll(".track-btn"));
   const trackSections = Array.from(document.querySelectorAll("section[data-track]"));
+  const navLinks = Array.from(document.querySelectorAll(".nav-links a[data-nav]"));
+  const NAV_MODE = "fade"; // "hide" or "fade"
 
   const copy = {
     teaching: {
@@ -350,6 +352,17 @@
       const show = (secTrack === "both") || (secTrack === safeTrack);
       sec.style.display = show ? "" : "none";
     });
+
+      // Tailor nav links
+  navLinks.forEach(a => {
+    const navTrack = a.dataset.nav; // teaching / research / both
+    const relevant = (navTrack === "both") || (navTrack === safeTrack);
+  
+    a.classList.remove("is-hidden", "is-faded");
+    if (!relevant) {
+      a.classList.add(NAV_MODE === "fade" ? "is-faded" : "is-hidden");
+    }
+  });
 
     // Persist choice
     localStorage.setItem("siteTrack", safeTrack);

@@ -203,5 +203,8 @@ figcaption{
   margin: 0 auto;
 }
 
+.gallery .gallery-feature {
+  overflow: visible !important;
+}
 
 

@@ -193,13 +193,13 @@ figcaption{
   overflow: visible !important; /* stops container cropping */
 }
 
-/* Override any gallery-wide fixed sizing */
-.gallery-feature img.origin-photo {
-  width: 100%;
-  height: auto !important;        /* cancels fixed height */
-  max-height: none !important;    /* cancels max-height constraints */
-  object-fit: contain !important; /* cancels object-fit: cover */
-  object-position: center;
+.gallery-feature img {
+  width: auto;              /* don’t stretch to full width */
+  max-height: 420px;        /* ~4 inches on most screens */
+  height: auto !important;
+  object-fit: contain !important;
   display: block;
+  margin: 0 auto;           /* centers the image */
 }
+
 

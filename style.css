@@ -186,3 +186,14 @@ figcaption{
   line-height: 1.35;
   opacity: 0.9;
 }
+
+/* Special handling for childhood origin photo */
+.origin-photo {
+  width: 100%;
+  max-width: 600px;     /* controls how large it gets */
+  height: auto;         /* prevents cropping */
+  object-fit: contain;  /* key fix */
+  display: block;
+  margin: 0 auto;
+}
+

@@ -8,12 +8,12 @@
   --pad: 18px;
 
   /* Teaching: warm paper + highlighter yellow */
-  --bg: #fffdf6;
-  --text: #111111;
-  --muted: #444444;
+  --bg: #FFffff;
+  --text: #353535;
+  --muted: ##6C6C6C;
 
-  --bar: #ffe600;          /* highlighter yellow */
-  --barText: #111111;
+  --bar: #FFD91B;          /* highlighter yellow */
+  --barText: #353535;
 
   --line: rgba(0,0,0,.14);
   --accent: #111111;

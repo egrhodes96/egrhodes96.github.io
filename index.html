@@ -459,6 +459,14 @@
     const heroTitle = document.getElementById("heroTitle");
     const heroBlurb = document.getElementById("heroBlurb");
     const primaryCta = document.getElementById("primaryCta");
+    const resumeLink = document.getElementById("resume-link");
+const emailLink = document.getElementById("email-link");
+
+const resumes = {
+  teaching: "assets/docs/Emily_Rhodes_Teaching_CV.pdf",
+  research: "assets/docs/Emily_Rhodes_Research_CV.pdf",
+};
+
 
     const trackButtons = Array.from(document.querySelectorAll(".track-btn"));
     const trackSections = Array.from(document.querySelectorAll("section[data-track]"));
@@ -494,6 +502,19 @@
       heroBlurb.textContent = copy[safeTrack].blurb;
       primaryCta.textContent = copy[safeTrack].ctaText;
       primaryCta.setAttribute("href", copy[safeTrack].ctaHref);
+
+      // Update Resume + Email CTAs
+if (resumeLink) {
+  resumeLink.href = resumes[safeTrack];
+  resumeLink.textContent = (safeTrack === "research")
+    ? "Download Research CV"
+    : "Download Teaching CV";
+}
+
+if (emailLink) {
+  emailLink.href = "mailto:egrhodes96@gmail.com";
+}
+
 
       // Update toggle buttons
       trackButtons.forEach(btn => {

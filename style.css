@@ -218,7 +218,12 @@ body[data-track-theme="research"] .site-header{
   font-weight: 950;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+     border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 4px;
 }
+
+
 
 .section-lede{
   margin: 0 0 14px;

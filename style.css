@@ -1,36 +1,47 @@
 /* Emily Rhodes — Two-track site (Teaching / Research)
-   Clean lines, bold nav color, sharp type, no gradients, minimal UI styling
+   Clean lines + luminescent accents (sunlight / bioluminescence)
+   No gradients, minimal UI, bold nav color with glow
 */
 
 :root{
   --max: 1050px;
   --pad: 18px;
 
-  /* Teaching (default) */
+  /* Teaching (default): glowing sunlight */
   --bg: #fffdf7;
   --text: #111111;
   --muted: #4b4b4b;
 
-  --bar: #ffd400;          /* nav background */
-  --barText: #111111;      /* nav text */
+  --bar: #ffea00;            /* bright sunlight yellow */
+  --barText: #111111;
 
-  --line: rgba(0,0,0,.14); /* borders */
-  --accent: #111111;       /* links / accents */
+  --line: rgba(0,0,0,.14);
+  --accent: #111111;
+
   --imgBorder: rgba(0,0,0,.18);
+
+  /* Luminescent glow */
+  --glow: rgba(255, 234, 0, .65);   /* highlighter glow */
+  --glow2: rgba(255, 170, 0, .35);  /* warm halo */
 }
 
-/* Research palette: darker, cooler, purple accent */
+/* Research palette: deep ocean + bioluminescent cyan (plus purple halo) */
 body[data-track-theme="research"]{
   --bg: #0b1020;
   --text: #f2f4ff;
   --muted: rgba(242,244,255,.72);
 
-  --bar: #143a9a;          /* deep blue */
+  --bar: #0b2a8f;            /* deep ocean blue */
   --barText: #f2f4ff;
 
   --line: rgba(242,244,255,.16);
-  --accent: #b7a7ff;       /* purple-leaning */
+
+  /* Accent is "bioluminescent" */
+  --accent: #a7fffb;         /* glowing cyan */
   --imgBorder: rgba(242,244,255,.20);
+
+  --glow: rgba(167, 255, 251, .55); /* plankton glow */
+  --glow2: rgba(183, 167, 255, .35);/* dye/purple halo */
 }
 
 *{ box-sizing:border-box; }
@@ -49,17 +60,22 @@ main{
   padding: 26px var(--pad) 70px;
 }
 
-/* Links */
+/* Links: clean but glowy on hover */
 a{
   color: var(--accent);
-  font-weight: 750;
+  font-weight: 800;
   text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 3px;
   text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent);
 }
-a:hover{ opacity: .85; }
+a:hover{
+  opacity: 1;
+  text-decoration-color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+}
 
-/* Header / nav */
+/* Header / nav: bold color + luminescent aura */
 .site-header{
   position: sticky;
   top: 0;
@@ -67,9 +83,23 @@ a:hover{ opacity: .85; }
   background: var(--bar);
   color: var(--barText);
   border-bottom: 4px solid rgba(0,0,0,.18);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.10),
+    0 0 28px var(--glow);
 }
 body[data-track-theme="research"] .site-header{
-  border-bottom-color: rgba(255,255,255,.12);
+  border-bottom-color: rgba(242,244,255,.14);
+}
+
+/* Neon strip under the nav (subtle but memorable) */
+.site-header::after{
+  content:"";
+  display:block;
+  height: 3px;
+  background: var(--accent);
+  opacity: .9;
+  box-shadow: 0 0 16px var(--glow);
 }
 
 .nav{
@@ -88,6 +118,7 @@ body[data-track-theme="research"] .site-header{
   letter-spacing: .2px;
   color: var(--barText);
   text-decoration: none;
+  text-shadow: 0 0 12px rgba(255,255,255,.12);
 }
 
 .nav-links{
@@ -99,12 +130,13 @@ body[data-track-theme="research"] .site-header{
 .nav-links a{
   color: var(--barText);
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 850;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
 }
 .nav-links a:hover{
   border-bottom-color: var(--barText);
+  text-shadow: 0 0 14px var(--glow);
 }
 .nav-links a.is-hidden{ display:none; }
 .nav-links a.is-faded{ opacity:.45; pointer-events:none; }
@@ -127,7 +159,7 @@ body[data-track-theme="research"] .site-header{
   font-weight: 520;
 }
 
-/* Toggle (flat, not “pill buttons”) */
+/* Toggle: flat, but with a tiny glow on active */
 .track-toggle{
   display:inline-flex;
   gap: 10px;
@@ -151,9 +183,10 @@ body[data-track-theme="research"] .site-header{
   background: var(--text);
   color: var(--bg);
   border-color: var(--text);
+  box-shadow: 0 0 18px var(--glow);
 }
 
-/* CTA links styled like labels (not glossy buttons) */
+/* CTA: sharp labels */
 .hero-cta{
   margin-top: 16px;
   display:flex;
@@ -171,18 +204,34 @@ body[data-track-theme="research"] .site-header{
   font-weight: 950;
   text-decoration: none;
 }
-.button:hover{ opacity: .85; }
+.button:hover{
+  opacity: .9;
+  box-shadow: 0 0 14px var(--glow);
+}
 
 .button.secondary{
   border-color: var(--line);
   color: var(--muted);
 }
 
-/* Sections */
+/* Sections: clean panels + subtle glow bar */
 .section{
   margin-top: 56px;
   padding-top: 14px;
   border-top: 4px solid var(--line);
+  position: relative;
+}
+
+.section::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-4px;
+  height:4px;
+  width: 100%;
+  background: var(--accent);
+  opacity: .9;
+  box-shadow: 0 0 18px var(--glow);
 }
 
 .section h2{
@@ -201,7 +250,7 @@ body[data-track-theme="research"] .site-header{
   max-width: 92ch;
 }
 
-/* Simple “card” areas (resume/contact): flat border only */
+/* Simple “card” areas (resume/contact): flat border */
 .card{
   border: 2px solid var(--line);
   padding: 16px;
@@ -211,7 +260,7 @@ body[data-track-theme="research"] .site-header{
 .beyond-list{ margin: 10px 0 0; padding-left: 18px; }
 .beyond-list li{ margin: 6px 0; }
 
-/* Gallery: sharp photos, no rounding, no shadows */
+/* Gallery: sharp photos + tiny glow on hover (not buttony) */
 .gallery{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -227,6 +276,10 @@ body[data-track-theme="research"] .site-header{
   object-fit: cover;
   display: block;
   border: 2px solid var(--imgBorder);
+}
+
+.gallery figure:hover img{
+  box-shadow: 0 0 22px var(--glow2);
 }
 
 .gallery figcaption{
@@ -276,4 +329,3 @@ body[data-track-theme="research"] .site-header{
   color: var(--muted);
   font-size: .95rem;
 }
-

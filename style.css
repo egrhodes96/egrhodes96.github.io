@@ -1,26 +1,36 @@
-/* ==========================
-   Emily Rhodes — Dual Theme
-   Teaching = sunny amber
-   Research = deep marine blue
-   ========================== */
+/* Emily Rhodes — Two-track site (Teaching / Research)
+   Clean lines, bold nav color, sharp type, no gradients, minimal UI styling
+*/
 
 :root{
   --max: 1050px;
+  --pad: 18px;
 
-  /* shared neutrals */
-  --bg: #fbfaf5;
-  --card: rgba(255,255,255,.78);
-  --text: #0b1220;
-  --muted: #415263;
-  --border: rgba(15,23,42,.10);
-  --shadow: 0 18px 48px rgba(15,23,42,.12);
+  /* Teaching (default) */
+  --bg: #fffdf7;
+  --text: #111111;
+  --muted: #4b4b4b;
 
-  /* swapped by theme */
-  --accent: #f59e0b;
-  --accent2: #b45309;
-  --tint: rgba(245,158,11,.16);
+  --bar: #ffd400;          /* nav background */
+  --barText: #111111;      /* nav text */
 
-  --radius: 14px;
+  --line: rgba(0,0,0,.14); /* borders */
+  --accent: #111111;       /* links / accents */
+  --imgBorder: rgba(0,0,0,.18);
+}
+
+/* Research palette: darker, cooler, purple accent */
+body[data-track-theme="research"]{
+  --bg: #0b1020;
+  --text: #f2f4ff;
+  --muted: rgba(242,244,255,.72);
+
+  --bar: #143a9a;          /* deep blue */
+  --barText: #f2f4ff;
+
+  --line: rgba(242,244,255,.16);
+  --accent: #b7a7ff;       /* purple-leaning */
+  --imgBorder: rgba(242,244,255,.20);
 }
 
 *{ box-sizing:border-box; }
@@ -28,51 +38,44 @@ html,body{ margin:0; padding:0; }
 
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
   color: var(--text);
   line-height: 1.65;
-  background:
-    radial-gradient(900px 520px at 12% 0%, var(--tint) 0%, var(--bg) 58%),
-    var(--bg);
 }
-
-/* Theme swap driven by JS: body[data-track-theme="..."] */
-body[data-track-theme="teaching"]{
-  --accent: #f59e0b;     /* modern happy yellow (amber) */
-  --accent2: #b45309;    /* deep amber */
-  --tint: rgba(245,158,11,.18);
-  --bg: #fbfaf5;         /* warm paper */
-}
-
-body[data-track-theme="research"]{
-  --accent: #2563eb;     /* ocean blue */
-  --accent2: #1e3a8a;    /* deep navy */
-  --tint: rgba(37,99,235,.18);
-  --bg: #f5f8ff;         /* cool paper */
-}
-
-a{ color: var(--accent2); text-decoration:none; }
-a:hover{ text-decoration:underline; }
 
 main{
   max-width: var(--max);
   margin: 0 auto;
-  padding: 34px 18px 70px;
+  padding: 26px var(--pad) 70px;
 }
+
+/* Links */
+a{
+  color: var(--accent);
+  font-weight: 750;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover{ opacity: .85; }
 
 /* Header / nav */
 .site-header{
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255,255,255,.62);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(15,23,42,.08);
+  background: var(--bar);
+  color: var(--barText);
+  border-bottom: 4px solid rgba(0,0,0,.18);
+}
+body[data-track-theme="research"] .site-header{
+  border-bottom-color: rgba(255,255,255,.12);
 }
 
 .nav{
   max-width: var(--max);
   margin: 0 auto;
-  padding: 14px 18px;
+  padding: 14px var(--pad);
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -81,9 +84,10 @@ main{
 }
 
 .logo{
-  font-weight: 900;
-  color: var(--text);
+  font-weight: 950;
   letter-spacing: .2px;
+  color: var(--barText);
+  text-decoration: none;
 }
 
 .nav-links{
@@ -93,144 +97,121 @@ main{
 }
 
 .nav-links a{
-  color: var(--muted);
-  font-weight: 650;
+  color: var(--barText);
+  text-decoration: none;
+  font-weight: 800;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
 }
-
 .nav-links a:hover{
-  color: var(--text);
+  border-bottom-color: var(--barText);
 }
-
 .nav-links a.is-hidden{ display:none; }
 .nav-links a.is-faded{ opacity:.45; pointer-events:none; }
 
 /* Hero */
-/* ==========================
-   HERO = editorial color block
-   ========================== */
+.hero{ padding: 26px 0 8px; }
+.hero-inner{ max-width: 88ch; }
 
-.hero {
-  margin: 0 -18px;
-  padding: 48px 18px 36px;
-  background: var(--accent);
-}
-
-.hero h1 {
-  font-size: clamp(2.4rem, 4vw, 3.2rem);
-  font-weight: 900;
+.hero h1{
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-weight: 950;
   letter-spacing: -0.02em;
-  color: #000;
 }
 
-body[data-track-theme="research"] .hero h1 {
-  color: #fff;
+.hero p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 520;
 }
 
-.hero p {
-  max-width: 70ch;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: inherit;
-}
-
-
-/* Toggle */
+/* Toggle (flat, not “pill buttons”) */
 .track-toggle{
   display:inline-flex;
-  gap: 8px;
+  gap: 10px;
   margin-top: 14px;
-  padding: 6px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(15,23,42,.10);
-  border-radius: 999px;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .track-btn{
   appearance:none;
-  border: 0;
+  border: 2px solid var(--line);
   background: transparent;
+  color: var(--text);
   padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 800;
-  color: var(--muted);
+  border-radius: 0;
+  font-weight: 950;
   cursor: pointer;
 }
-
 .track-btn.is-active{
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  color: #fff;
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
 }
 
-/* Buttons */
+/* CTA links styled like labels (not glossy buttons) */
 .hero-cta{
   margin-top: 16px;
   display:flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .button{
   display:inline-block;
-  padding: 10px 16px;
-  font-weight: 800;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(15,23,42,.12);
+  padding: 10px 12px;
+  border: 2px solid var(--text);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  font-weight: 950;
+  text-decoration: none;
 }
-
-.button:hover{
-  text-decoration:none;
-  filter: brightness(0.98);
-}
+.button:hover{ opacity: .85; }
 
 .button.secondary{
-  background: rgba(255,255,255,.72);
-  color: var(--accent2);
-  border: 1px solid rgba(15,23,42,.14);
-  box-shadow: none;
+  border-color: var(--line);
+  color: var(--muted);
 }
 
 /* Sections */
-.section{ margin-top: 34px; }
+.section{
+  margin-top: 56px;
+  padding-top: 14px;
+  border-top: 4px solid var(--line);
+}
+
 .section h2{
-  margin: 0 0 10px;
-  font-size: 1.6rem;
-  letter-spacing: .2px;
-  position: relative;
-  padding-left: 12px;
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-.section h2::before{
-  content:"";
-  position:absolute;
-  left: 0;
-  top: .35em;
-  width: 4px;
-  height: 1.05em;
-  background: linear-gradient(180deg, var(--accent), var(--accent2));
-}
+
 .section-lede{
   margin: 0 0 14px;
   color: var(--muted);
   font-size: 1.05rem;
-  max-width: 90ch;
+  font-weight: 520;
+  max-width: 92ch;
 }
 
-/* Cards */
+/* Simple “card” areas (resume/contact): flat border only */
 .card{
-  background: var(--card);
-  border: 1px solid rgba(15,23,42,.10);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 18px;
+  border: 2px solid var(--line);
+  padding: 16px;
 }
 
 /* Lists */
 .beyond-list{ margin: 10px 0 0; padding-left: 18px; }
 .beyond-list li{ margin: 6px 0; }
 
-/* Gallery: modern, lively, no “border” look */
+/* Gallery: sharp photos, no rounding, no shadows */
 .gallery{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -238,50 +219,33 @@ body[data-track-theme="research"] .hero h1 {
   margin-top: 14px;
 }
 
-.gallery figure{
-  margin: 0;
-  background: transparent;
-  border: none;
-  overflow: visible;
-}
+.gallery figure{ margin: 0; }
 
 .gallery img{
   width: 100%;
   height: 280px;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  box-shadow: 0 18px 44px rgba(15,23,42,.14);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
-.gallery figure:hover img{
-  transform: translateY(-3px);
-  box-shadow: 0 22px 56px rgba(15,23,42,.18);
+  border: 2px solid var(--imgBorder);
 }
 
 .gallery figcaption{
-  padding: 10px 0 0;
+  padding-top: 8px;
   color: var(--muted);
   font-size: .95rem;
-  line-height: 1.35;
+  font-weight: 700;
 }
 
-/* Origin photo: full image, ~4 inches tall */
-.gallery .gallery-feature{
-  overflow: visible !important;
-}
-
+/* Origin photo: show full image, not huge */
 .gallery .gallery-feature img.origin-photo{
-  width: auto !important;
-  max-height: 420px !important;
-  height: auto !important;
-  object-fit: contain !important;
+  width: auto;
+  max-height: 420px;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid var(--imgBorder);
 }
 
-/* Skills */
+/* Skills grid */
 .skills-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -290,304 +254,26 @@ body[data-track-theme="research"] .hero h1 {
 }
 
 .skill-card{
-  background: var(--card);
-  border: 1px solid rgba(15,23,42,.10);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 16px;
+  border: 2px solid var(--line);
+  padding: 14px;
 }
-
 .skill-card h3{
   margin: 0 0 8px;
-  font-size: 1.05rem;
+  font-weight: 950;
 }
-
 .skill-card ul{
   margin: 0;
   padding-left: 18px;
   color: var(--muted);
 }
-
 .skill-card li{ margin: 6px 0; }
 
 /* Footer */
 .footer{
   margin-top: 34px;
   padding-top: 18px;
-  border-top: 1px solid rgba(15,23,42,.10);
+  border-top: 2px solid var(--line);
   color: var(--muted);
   font-size: .95rem;
 }
 
-/* ==========================
-   EXTRA MODERN: banners + bold accents
-   ========================== */
-
-/* Add “neon” highlight colors per track */
-body[data-track-theme="teaching"]{
-  --pop: #ffd60a;     /* brighter yellow pop */
-  --pop2:#ffb703;     /* golden */
-  --ink:#1b1300;      /* warm dark for contrast in badges */
-}
-
-body[data-track-theme="research"]{
-  --pop: #7c3aed;     /* purple pop */
-  --pop2:#3b82f6;     /* bright ocean */
-  --ink:#0b1020;
-}
-
-/* Stronger background vibe */
-body{
-  background:
-    radial-gradient(900px 520px at 12% 0%, var(--tint) 0%, rgba(255,255,255,0) 58%),
-    linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0)),
-    var(--bg);
-}
-
-/* HERO: make it feel like a “banner” */
-.hero-inner{
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-}
-
-/* Decorative shapes behind hero content */
-.hero-decor{
-  position:absolute;
-  inset:-40% -30% auto -30%;
-  height: 260px;
-  pointer-events:none;
-  z-index:0;
-  background:
-    radial-gradient(120px 120px at 18% 40%, rgba(255,214,10,.55) 0%, rgba(255,214,10,0) 60%),
-    radial-gradient(170px 170px at 55% 20%, rgba(124,58,237,.28) 0%, rgba(124,58,237,0) 60%),
-    radial-gradient(260px 260px at 90% 60%, rgba(37,99,235,.22) 0%, rgba(37,99,235,0) 60%),
-    linear-gradient(90deg, rgba(255,214,10,.14), rgba(124,58,237,.10));
-  filter: blur(2px);
-  transform: rotate(-8deg);
-  opacity: .95;
-}
-
-/* Ensure hero content stays above decor */
-.hero-inner > *:not(.hero-decor){
-  position: relative;
-  z-index: 1;
-}
-
-/* Headline underline = bold stripe that changes with theme */
-.hero h1{
-  display:inline-block;
-  padding-bottom: 6px;
-  background:
-    linear-gradient(transparent 70%, rgba(255,255,255,0) 70%),
-    linear-gradient(90deg, var(--pop), var(--accent2));
-  background-size: 100% 100%, 100% 6px;
-  background-repeat: no-repeat;
-  background-position: 0 100%, 0 100%;
-}
-
-/* Toggle active state more “designed” */
-.track-toggle{
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(15,23,42,.10);
-  box-shadow: 0 10px 26px rgba(15,23,42,.10);
-}
-.track-btn.is-active{
-  background: linear-gradient(90deg, var(--pop), var(--accent2));
-}
-
-/* Buttons: brighter gradient, sharper */
-.button{
-  background: linear-gradient(90deg, var(--pop), var(--accent2));
-  box-shadow: 0 16px 36px rgba(15,23,42,.16);
-}
-
-/* Section title bar: thicker + gradient */
-.section h2::before{
-  width: 6px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--pop), var(--accent2));
-}
-
-/* Add subtle “section banners” */
-.section{
-  position: relative;
-}
-
-.section::before{
-  content:"";
-  position:absolute;
-  left:-12px;
-  right:-12px;
-  top:-6px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(15,23,42,0), rgba(15,23,42,.10), rgba(15,23,42,0));
-}
-
-/* Gallery: slightly sharper corners + highlight on hover */
-.gallery img{
-  border-radius: 10px;
-}
-.gallery figure:hover img{
-  box-shadow: 0 26px 64px rgba(15,23,42,.20);
-}
-
-/* Skills cards: add a thin top accent strip */
-.skill-card{
-  position: relative;
-  overflow: hidden;
-}
-.skill-card::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:4px;
-  background: linear-gradient(90deg, var(--pop), var(--accent2));
-}
-
-/* Section-specific banner blocks */
-#teaching, #outdoor, #beyond, #resume{
-  background: linear-gradient(180deg, rgba(255,214,10,.10), rgba(255,255,255,0));
-  padding: 18px 18px 0;
-  border-radius: 18px;
-}
-
-#research, #skills{
-  background: linear-gradient(180deg, rgba(124,58,237,.12), rgba(255,255,255,0));
-  padding: 18px 18px 0;
-  border-radius: 18px;
-}
-
-/* Big bold hero background wash */
-.hero-inner::before{
-  content:"";
-  position:absolute;
-  left: -18px;
-  right: -18px;
-  top: -10px;
-  bottom: -16px;
-
-  /* this creates the bold background per theme */
-  background:
-    radial-gradient(600px 260px at 18% 25%, color-mix(in srgb, var(--pop) 35%, transparent) 0%, transparent 60%),
-    radial-gradient(520px 260px at 70% 0%, color-mix(in srgb, var(--accent2) 22%, transparent) 0%, transparent 60%),
-    linear-gradient(90deg,
-      color-mix(in srgb, var(--pop) 18%, transparent),
-      color-mix(in srgb, var(--accent2) 14%, transparent)
-    );
-
-  border-radius: 18px;
-  z-index: 0;
-}
-
-/* Keep hero content above that background */
-.hero-inner > *{
-  position: relative;
-  z-index: 1;
-}
-
-.track-toggle{
-  background: rgba(255,255,255,.55) !important;
-  border: 1px solid rgba(15,23,42,.10) !important;
-  box-shadow: 0 10px 26px rgba(15,23,42,.10) !important;
-}
-
-/* ==========================
-   RESET: remove buttony / card look
-   ========================== */
-
-.hero-inner,
-.card,
-.skill-card,
-.track-toggle {
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
-
-/* Kill gradients everywhere */
-* {
-  background-image: none !important;
-}
-/* ==========================
-   THEME PALETTES (flat + bold)
-   ========================== */
-
-/* Teaching: bright, optimistic */
-body[data-track-theme="teaching"] {
-  --bg: #fffdf7;
-  --text: #111111;
-  --muted: #4b4b4b;
-
-  --accent: #ffd400;     /* bold yellow */
-  --accent-dark: #c9a400;
-}
-
-/* Research: darker, cooler */
-body[data-track-theme="research"] {
-  --bg: #f6f8ff;
-  --text: #0b1020;
-  --muted: #3a3f55;
-
-  --accent: #1f4ed8;     /* strong blue */
-  --accent-dark: #3b2fa3; /* blue-purple */
-}
-
-body {
-  background: var(--bg) !important;
-  color: var(--text);
-}
-
-/* ==========================
-   SECTIONS = clean panels
-   ========================== */
-
-.section {
-  margin-top: 56px;
-  padding-top: 12px;
-  border-top: 4px solid var(--accent);
-}
-
-.section h2 {
-  font-size: 1.4rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.section-lede {
-  font-size: 1.05rem;
-  font-weight: 500;
-}
-
-/* ==========================
-   IMAGES = sharp + intentional
-   ========================== */
-
-.gallery img {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  border: 2px solid var(--accent);
-}
-
-.gallery figcaption {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-top: 6px;
-}
-
-strong {
-  color: var(--accent-dark);
-  font-weight: 900;
-}
-
-a {
-  color: var(--accent-dark);
-  font-weight: 700;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-}

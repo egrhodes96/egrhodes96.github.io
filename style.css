@@ -15,7 +15,7 @@
   --bar: #FFD91B;          /* highlighter yellow */
   --barText: #353535;
 
-  --line: rgba(0,0,0,.14);
+  --line: rgb(217, 255, 16));
   --accent: #111111;
 
   --imgBorder: rgba(0,0,0,.18);
@@ -23,16 +23,16 @@
 
 /* Research palette: deep ocean + bioluminescent cyan (plus purple halo) */
 body[data-track-theme="research"]{
-  --bg: #07121e;           /* deep ocean */
-  --text: #eef4ff;
-  --muted: rgba(238,244,255,.70);
+  --bg: #01161E;           /* deep ocean */
+  --text: ##C6E0E9;
+  --muted: rgb(146 179 189);
 
-  --bar: #0a2b7a;          /* deep marine blue */
-  --barText: #eef4ff;
+  --bar: #0DEEBE;          /* deep marine blue */
+  --barText: #C6E0E9;
 
   --line: rgba(238,244,255,.16);
-  --accent: #7dffd6;       /* bioluminescent green-cyan */
-  --imgBorder: rgba(238,244,255,.20);
+  --accent: #7#29FFA2;       /* bioluminescent green-cyan */
+  --imgBorder: rgb(71 255 151);
 }
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }

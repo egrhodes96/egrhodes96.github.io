@@ -7,43 +7,33 @@
   --max: 1050px;
   --pad: 18px;
 
-  /* Teaching (default): glowing sunlight */
-  --bg: #fffdf7;
+  /* Teaching: warm paper + highlighter yellow */
+  --bg: #fffdf6;
   --text: #111111;
-  --muted: #4b4b4b;
+  --muted: #444444;
 
-  --bar: #ffea00;            /* bright sunlight yellow */
+  --bar: #ffe600;          /* highlighter yellow */
   --barText: #111111;
 
   --line: rgba(0,0,0,.14);
   --accent: #111111;
 
   --imgBorder: rgba(0,0,0,.18);
-
-  /* Luminescent glow */
-  --glow: rgba(255, 234, 0, .65);   /* highlighter glow */
-  --glow2: rgba(255, 170, 0, .35);  /* warm halo */
 }
 
 /* Research palette: deep ocean + bioluminescent cyan (plus purple halo) */
 body[data-track-theme="research"]{
-  --bg: #0b1020;
-  --text: #f2f4ff;
-  --muted: rgba(242,244,255,.72);
+  --bg: #07121e;           /* deep ocean */
+  --text: #eef4ff;
+  --muted: rgba(238,244,255,.70);
 
-  --bar: #0b2a8f;            /* deep ocean blue */
-  --barText: #f2f4ff;
+  --bar: #0a2b7a;          /* deep marine blue */
+  --barText: #eef4ff;
 
-  --line: rgba(242,244,255,.16);
-
-  /* Accent is "bioluminescent" */
-  --accent: #a7fffb;         /* glowing cyan */
-  --imgBorder: rgba(242,244,255,.20);
-
-  --glow: rgba(167, 255, 251, .55); /* plankton glow */
-  --glow2: rgba(183, 167, 255, .35);/* dye/purple halo */
+  --line: rgba(238,244,255,.16);
+  --accent: #7dffd6;       /* bioluminescent green-cyan */
+  --imgBorder: rgba(238,244,255,.20);
 }
-
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 
@@ -72,7 +62,6 @@ a{
 a:hover{
   opacity: 1;
   text-decoration-color: var(--accent);
-  text-shadow: 0 0 10px var(--glow);
 }
 
 /* Header / nav: bold color + luminescent aura */
@@ -82,25 +71,15 @@ a:hover{
   z-index: 10;
   background: var(--bar);
   color: var(--barText);
-  border-bottom: 4px solid rgba(0,0,0,.18);
+  border-bottom: 4px solid var(--accent); /* crisp, bright edge */
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.10),
-    0 0 28px var(--glow);
 }
+
+
 body[data-track-theme="research"] .site-header{
   border-bottom-color: rgba(242,244,255,.14);
 }
 
-/* Neon strip under the nav (subtle but memorable) */
-.site-header::after{
-  content:"";
-  display:block;
-  height: 3px;
-  background: var(--accent);
-  opacity: .9;
-  box-shadow: 0 0 16px var(--glow);
-}
 
 .nav{
   max-width: var(--max);
@@ -160,32 +139,34 @@ body[data-track-theme="research"] .site-header{
 }
 
 /* Toggle: flat, but with a tiny glow on active */
+/* Toggle: segmented control */
 .track-toggle{
-  display:inline-flex;
-  gap: 10px;
+  display: inline-flex;
   margin-top: 14px;
-  padding: 0;
-  border: none;
-  background: none;
+  border: 2px solid var(--line);
+  background: transparent;
+  padding: 3px;
+  gap: 0;
 }
 
 .track-btn{
-  appearance:none;
-  border: 2px solid var(--line);
+  appearance: none;
+  border: none;
   background: transparent;
-  color: var(--text);
-  padding: 8px 12px;
-  border-radius: 0;
-  font-weight: 950;
+  color: var(--muted);
+  padding: 9px 12px;
+  font-weight: 900;
   cursor: pointer;
 }
+
+.track-btn + .track-btn{
+  border-left: 2px solid var(--line);
+}
+
 .track-btn.is-active{
   background: var(--text);
   color: var(--bg);
-  border-color: var(--text);
-  box-shadow: 0 0 18px var(--glow);
 }
-
 /* CTA: sharp labels */
 .hero-cta{
   margin-top: 16px;
@@ -222,17 +203,7 @@ body[data-track-theme="research"] .site-header{
   position: relative;
 }
 
-.section::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:-4px;
-  height:4px;
-  width: 100%;
-  background: var(--accent);
-  opacity: .9;
-  box-shadow: 0 0 18px var(--glow);
-}
+
 
 .section h2{
   margin: 0 0 8px;
@@ -276,11 +247,10 @@ body[data-track-theme="research"] .site-header{
   object-fit: cover;
   display: block;
   border: 2px solid var(--imgBorder);
+  border-radius: 0;
 }
 
-.gallery figure:hover img{
-  box-shadow: 0 0 22px var(--glow2);
-}
+
 
 .gallery figcaption{
   padding-top: 8px;

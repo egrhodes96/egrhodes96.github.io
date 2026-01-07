@@ -65,6 +65,7 @@ My experience spans Rome-based international classrooms, marine and outdoor educ
     Email
   </a>
 </div>
+        </div>
 
     </section>
 
@@ -459,111 +460,100 @@ Beyond the classroom, I served as an advisor, supported overnight field trips (i
   </footer>
 
   <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ----- Track Toggle -----
-    const heroTitle = document.getElementById("heroTitle");
-    const heroBlurb = document.getElementById("heroBlurb");
-    const primaryCta = document.getElementById("primaryCta");
-    const resumeLink = document.getElementById("resume-link");
-const emailLink = document.getElementById("email-link");
+  // Elements
+  const heroTitle = document.getElementById("heroTitle");
+  const heroBlurb = document.getElementById("heroBlurb");
+  const resumeLink = document.getElementById("resume-link");
+  const emailLink = document.getElementById("email-link");
 
-const resumes = {
-  teaching: "assets/docs/Emily_Rhodes_Teaching_CV.pdf",
-  research: "assets/docs/Emily_Rhodes_Research_CV.pdf",
-};
+  const trackButtons = Array.from(document.querySelectorAll(".track-btn"));
+  const trackSections = Array.from(document.querySelectorAll('section[data-track]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[data-nav]'));
 
+  const NAV_MODE = "fade"; // "hide" or "fade"
 
-    const trackButtons = Array.from(document.querySelectorAll(".track-btn"));
-    const trackSections = Array.from(document.querySelectorAll("section[data-track]"));
-    const navLinks = Array.from(document.querySelectorAll(".nav-links a[data-nav]"));
+  // Resume files
+  const resumes = {
+    teaching: "assets/docs/Emily_Rhodes_Teaching_CV.pdf",
+    research: "assets/docs/Emily_Rhodes_Research_CV.pdf",
+  };
 
-    const NAV_MODE = "fade"; // "hide" or "fade"
+  // Hero copy per mode
+  const copy = {
+    teaching: {
+      title: "Helping students see themselves as capable scientists",
+      blurb:
+        "I teach middle and early high school science in international settings, with a focus on NGSS-aligned inquiry, clear lab routines, and real organisms and phenomena. My experience spans Rome-based international classrooms, marine and outdoor education, and research in marine genomics."
+    },
+    research: {
+      title: "Marine researcher & educator with field-to-lab experience",
+      blurb:
+        "I combine fieldwork, lab skills, and data-driven thinking—from shipboard sampling (R/V Sonne) and coastal ecology to aquaculture genomics research. I document methods clearly and communicate results to mixed technical audiences."
+    }
+  };
 
-    const copy = {
-      teaching: {
-        title: "Science educator celebrating students every day",
-        blurb:
-          "I teach middle and high school science through hands-on investigation, outdoor learning, and real-world context. My background spans international classrooms (Rome), experiential education, and marine research.",
-        ctaText: "Teaching",
-        ctaHref: "#teaching"
-      },
-      research: {
-        title: "Marine scientist & educator with field-to-lab experience",
-        blurb:
-          "I combine fieldwork, lab skills, and data-driven thinking—from shipboard sampling (R/V Sonne) and coastal ecology to aquaculture genomics research and clear science communication.",
-        ctaText: "Research",
-        ctaHref: "#research"
-      }
-    };
+  function setTrack(track, { scrollToTop = false } = {}) {
+    const safeTrack = (track === "research") ? "research" : "teaching";
 
-    function setTrack(track, { scrollToTop = false } = {}) {
-      const safeTrack = (track === "research") ? "research" : "teaching";
+    // Theme swap
+    document.body.setAttribute("data-track-theme", safeTrack);
 
-      // Theme swap (Teaching vs Research palette)
-      document.body.setAttribute("data-track-theme", safeTrack);
+    // Hero copy
+    if (heroTitle) heroTitle.textContent = copy[safeTrack].title;
+    if (heroBlurb) heroBlurb.textContent = copy[safeTrack].blurb;
 
-      // Update hero copy + CTA
-      heroTitle.textContent = copy[safeTrack].title;
-      heroBlurb.textContent = copy[safeTrack].blurb;
-      primaryCta.textContent = copy[safeTrack].ctaText;
-      primaryCta.setAttribute("href", copy[safeTrack].ctaHref);
-
-      // Update Resume + Email CTAs
-if (resumeLink) {
-  resumeLink.href = resumes[safeTrack];
-  resumeLink.textContent = (safeTrack === "research")
-    ? "Download Research CV"
-    : "Download Teaching CV";
-}
-
-if (emailLink) {
-  emailLink.href = "mailto:egrhodes96@gmail.com";
-}
-
-
-      // Update toggle buttons
-      trackButtons.forEach(btn => {
-        const isActive = btn.dataset.track === safeTrack;
-        btn.classList.toggle("is-active", isActive);
-        btn.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-
-      // Show/hide sections
-      trackSections.forEach(sec => {
-        const secTrack = sec.dataset.track;
-        const show = (secTrack === "both") || (secTrack === safeTrack);
-        sec.style.display = show ? "" : "none";
-      });
-
-      // Tailor nav links
-      navLinks.forEach(a => {
-        const navTrack = a.dataset.nav; // teaching / research / both
-        const relevant = (navTrack === "both") || (navTrack === safeTrack);
-
-        a.classList.remove("is-hidden", "is-faded");
-        if (!relevant) {
-          a.classList.add(NAV_MODE === "fade" ? "is-faded" : "is-hidden");
-        }
-      });
-
-      // Persist choice
-      localStorage.setItem("siteTrack", safeTrack);
-      const url = new URL(window.location.href);
-      url.searchParams.set("track", safeTrack);
-      window.history.replaceState({}, "", url.toString());
-
-      if (scrollToTop) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+    // Resume CTA (primary)
+    if (resumeLink) {
+      resumeLink.href = resumes[safeTrack];
+      resumeLink.textContent = (safeTrack === "research")
+        ? "Download Research CV"
+        : "Download Teaching CV";
     }
 
-    // Click handling
+    // Email CTA (same both modes, but keep it explicit)
+    if (emailLink) emailLink.href = "mailto:egrhodes96@gmail.com";
+
+    // Toggle buttons state
     trackButtons.forEach(btn => {
-      btn.addEventListener("click", () => setTrack(btn.dataset.track, { scrollToTop: true }));
+      const isActive = btn.dataset.track === safeTrack;
+      btn.classList.toggle("is-active", isActive);
+      btn.setAttribute("aria-selected", isActive ? "true" : "false");
     });
-// --- Section reveal (works with track toggle) ---
+
+    // Show/hide sections
+    trackSections.forEach(sec => {
+      const secTrack = sec.dataset.track;
+      const show = (secTrack === "both") || (secTrack === safeTrack);
+      sec.style.display = show ? "" : "none";
+    });
+
+    // Tailor nav
+    navLinks.forEach(a => {
+      const navTrack = a.dataset.nav; // teaching / research / both
+      const relevant = (navTrack === "both") || (navTrack === safeTrack);
+
+      a.classList.remove("is-hidden", "is-faded");
+      if (!relevant) a.classList.add(NAV_MODE === "fade" ? "is-faded" : "is-hidden");
+    });
+
+    // Persist choice
+    localStorage.setItem("siteTrack", safeTrack);
+    const url = new URL(window.location.href);
+    url.searchParams.set("track", safeTrack);
+    window.history.replaceState({}, "", url.toString());
+
+    if (scrollToTop) window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Click handling
+  trackButtons.forEach(btn => {
+    btn.addEventListener("click", () => setTrack(btn.dataset.track, { scrollToTop: true }));
+  });
+
+  // Section reveal (optional; safe)
   function applyRevealObservers(){
     const sections = Array.from(document.querySelectorAll(".section"));
     sections.forEach(s => s.classList.add("reveal"));
@@ -576,16 +566,12 @@ if (emailLink) {
 
     sections.forEach(s => io.observe(s));
   }
-
-  // Call once on load
   applyRevealObservers();
-    // Initialize from URL or saved preference
-    const params = new URLSearchParams(window.location.search);
-    const fromUrl = params.get("track");
-    const fromSaved = localStorage.getItem("siteTrack");
-    setTrack(fromUrl || fromSaved || "teaching");
-  </script>
-</body>
-</html>
 
+  // Initialize
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = params.get("track");
+  const fromSaved = localStorage.getItem("siteTrack");
+  setTrack(fromUrl || fromSaved || "teaching");
+</script>
 

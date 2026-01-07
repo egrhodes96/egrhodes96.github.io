@@ -83,10 +83,14 @@ a:hover{
 }
 
 
-body[data-track-theme="research"] .site-header{
-  border-bottom-color: rgba(242,244,255,.14);
+/* Teaching vs Research CTA emphasis */
+body[data-track-theme="teaching"] .hero-cta .button{
+  border-color: var(--text);
 }
 
+body[data-track-theme="research"] .hero-cta .button{
+  border-color: var(--accent);
+}
 
 .nav{
   max-width: var(--max);

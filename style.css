@@ -7,33 +7,40 @@
   --max: 1050px;
   --pad: 18px;
 
-  /* Teaching: warm paper + highlighter yellow */
-  --bg: #FFffff;
-  --text: #353535;
-  --muted: ##6C6C6C;
 
-  --bar: #FFD91B;          /* highlighter yellow */
-  --barText: #353535;
+   /* Teaching — Sunlit, human, confident */
+  --bg: #EAF2EF;          /* soft paper background */
+  --text: #2D2D2A;        /* charcoal text */
+  --muted: #5a5a57;       /* softened charcoal */
 
-  --line: rgb(217, 255, 16));
-  --accent: #111111;
+  --bar: #FFCE09;         /* highlighter yellow nav */
+  --barText: #2D2D2A;
 
-  --imgBorder: rgba(0,0,0,.18);
+  --accent: #2D2D2A;      /* strong ink */
+  --accent-soft: #8E7C93; /* subtle plum-gray */
+
+  --line: rgba(45,45,42,.18);
+  --imgBorder: rgba(45,45,42,.22);
+
 }
 
 /* Research palette: deep ocean + bioluminescent cyan (plus purple halo) */
+/* Research — Bioluminescent, marine, analytical */
 body[data-track-theme="research"]{
-  --bg: #01161E;           /* deep ocean */
-  --text: ##C6E0E9;
-  --muted: rgb(146 179 189);
+  --bg: #011116;          /* deep ocean background */
+  --text: #E9FFF7;        /* cool near-white */
+  --muted: #8FBDB5;       /* softened seafoam */
 
-  --bar: #0DEEBE;          /* deep marine blue */
-  --barText: #C6E0E9;
+  --bar: #011116;         /* nav blends into research world */
+  --barText: #E9FFF7;
 
-  --line: rgba(238,244,255,.16);
-  --accent: #7#29FFA2;       /* bioluminescent green-cyan */
-  --imgBorder: rgb(71 255 151);
+  --accent: #0FFF95;      /* bioluminescent signal */
+  --accent-soft: #1D7874; /* controlled teal */
+
+  --line: rgba(15,255,149,.25);
+  --imgBorder: rgba(15,255,149,.35);
 }
+
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 

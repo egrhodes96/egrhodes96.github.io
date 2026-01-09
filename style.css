@@ -160,6 +160,25 @@ body[data-track-theme="research"] .hero-cta .button{
   gap: 0;
 }
 
+.hero-grid{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hero-photo img{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 2px solid var(--imgBorder);
+}
+
+@media (max-width: 640px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-photo img{ width: 110px; height: 110px; }
+}
+
 .track-btn{
   appearance: none;
   border: none;
@@ -246,6 +265,16 @@ body[data-track-theme="research"] .hero-cta .button{
 /* Lists */
 .beyond-list{ margin: 10px 0 0; padding-left: 18px; }
 .beyond-list li{ margin: 6px 0; }
+
+.metric-list{
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.metric-list li{ margin: 6px 0; }
+
 
 /* Gallery: sharp photos + tiny glow on hover (not buttony) */
 .gallery{

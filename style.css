@@ -34,21 +34,29 @@
 
 }
 
-/* Research palette: deep ocean + bioluminescent cyan (plus purple halo) */
-/* Research — Bioluminescent, marine, analytical */
+
+/* ==========================
+   Research — Deep underwater, analytical
+   Bold nav + bioluminescent accents
+   ========================== */
 body[data-track-theme="research"]{
-  --bg: #011116;          /* deep ocean background */
-  --text: #E9FFF7;        /* cool near-white */
-  --muted: #8FBDB5;       /* softened seafoam */
+  --bg: #06131d;            /* deep ocean */
+  --text: #EFF7FF;
+  --muted: rgba(239,247,255,.72);
 
-  --bar: #011116;         /* nav blends into research world */
-  --barText: #E9FFF7;
+  /* NAV BAR */
+  --bar: #0B2A3A;           /* deep ocean teal-blue (bold, not black) */
+  --barText: #EFF7FF;
 
-  --accent: #0FFF95;      /* bioluminescent signal */
-  --accent-soft: #1D7874; /* controlled teal */
+  /* Accents */
+  --accent: #00F5D4;        /* bioluminescent cyan */
+  --accent-soft: #2D6BFF;   /* ocean azure */
+  --accent-deep: #2B3A8F;   /* indigo anchor */
 
-  --line: rgba(15,255,149,.25);
-  --imgBorder: rgba(15,255,149,.35);
+  --line: rgba(0,245,212,.25);
+  --imgBorder: rgba(0,245,212,.35);
+}
+
 }
 
 *{ box-sizing:border-box; }

@@ -7,19 +7,27 @@
   --max: 1050px;
   --pad: 18px;
 
-   /* Teaching — Sunlit, human, confident */
-  --bg: #EAF2EF;          /* soft paper background */
-  --text: #2D2D2A;        /* charcoal text */
-  --muted: #5a5a57;       /* softened charcoal */
+  /* ==========================
+   Teaching — Sunlit, confident, human
+   Yellow + Azure + Indigo
+   ========================== */
 
-  --bar: #FFCE09;         /* highlighter yellow nav */
-  --barText: #2D2D2A;
+--bg: #F7F6FB;            /* light academic paper (cool white) */
+--text: #252236;          /* deep indigo-charcoal for body text */
+--muted: #4B4B78;         /* softened indigo for secondary text */
 
-  --accent: #2D2D2A;      /* strong ink */
-  --accent-soft: #8E7C93; /* subtle plum-gray */
+/* Navigation / structural emphasis */
+--bar: #FBFF0D;           /* highlighter yellow (sunlit, bold) */
+--barText: #252236;       /* strong contrast on yellow */
 
-  --line: rgba(45,45,42,.18);
-  --imgBorder: rgba(45,45,42,.22);
+/* Accents & links */
+--accent: #00A6FF;        /* clear azure blue (primary accent) */
+--accent-soft: #1F3C88;   /* indigo blue (academic, grounding) */
+
+/* Lines & image framing */
+--line: rgba(37,34,54,.18);      /* indigo-tinted rule */
+--imgBorder: rgba(0,166,255,.35); /* azure image outline */
+
 
 }
 

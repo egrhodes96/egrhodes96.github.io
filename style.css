@@ -9,26 +9,26 @@
 
 
 /* ==========================
-/* ==========================
-   Teaching — Sunlit, confident, human
-   Yellow + Azure + Indigo (balanced)
+   Teaching — Sunlit, confident, academic
+   True Yellow + Azure + Indigo
    ========================== */
 
---bg: #F8F7F3;            /* warm-neutral paper */
---text: #252236;          /* deep indigo-charcoal */
---muted: #4A4A6A;         /* softened indigo */
+--bg: #F9F8F4;            /* warm paper, neutral */
+--text: #1F1F2E;          /* deep indigo-charcoal */
+--muted: #4A4A6F;         /* softened indigo */
 
 /* Navigation / structure */
---bar: #FFD84D;           /* sun-yellow (neutral-warm, not orange) */
---barText: #252236;
+--bar: #FFD400;           /* TRUE yellow, slight warm lean */
+--barText: #1F1F2E;
 
 /* Accents & links */
---accent: #00A2E8;        /* clean azure */
---accent-soft: #253A8F;   /* academic indigo */
+--accent: #008FD5;        /* crisp azure (not neon, not dull) */
+--accent-soft: #2B3A8F;   /* strong academic indigo */
 
 /* Lines & image framing */
---line: rgba(37,34,54,.18);
---imgBorder: rgba(0,162,232,.30);
+--line: rgba(31,31,46,.18);
+--imgBorder: rgba(0,143,213,.35);
+
 
 
 

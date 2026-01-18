@@ -618,6 +618,13 @@ Beyond the classroom, I served as an advisor, supported overnight field trips (i
         ? "Download Research CV"
         : "Download Teaching CV";
     }
+    if (safeTrack === "knitting") {
+  resumeLink.style.display = "none";
+} else {
+  resumeLink.style.display = "";
+  resumeLink.href = resumes[safeTrack];
+}
+
 
     // Email CTA (same both modes, but keep it explicit)
     if (emailLink) emailLink.href = "mailto:egrhodes96@gmail.com";

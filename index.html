@@ -551,7 +551,9 @@ Beyond the classroom, I served as an advisor, supported overnight field trips (i
   };
 
   function setTrack(track, { scrollToTop = false } = {}) {
-    const safeTrack = (track === "research") ? "research" : "teaching";
+    const safeTrack = ["teaching", "research", "knitting"].includes(track)
+  ? track
+  : "teaching";
 
     // Theme swap
     document.body.setAttribute("data-track-theme", safeTrack);

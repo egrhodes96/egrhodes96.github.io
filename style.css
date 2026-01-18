@@ -1,62 +1,65 @@
-/* Emily Rhodes — Two-track site (Teaching / Research)
-   Clean lines + luminescent accents (sunlight / bioluminescence)
-   No gradients, minimal UI, bold nav color with glow
+/* Emily Rhodes — Teaching / Research / Knitting
+   Clean lines, bold palettes, minimal UI, consistent layout
 */
 
+/* -------------------------
+   Base variables (Teaching default)
+-------------------------- */
 :root{
   --max: 1050px;
   --pad: 18px;
 
+  /* Teaching: True yellow + azure + indigo */
+  --bg: #F9F8F4;            /* warm paper */
+  --text: #1F1F2E;          /* deep indigo-charcoal */
+  --muted: #4A4A6F;         /* softened indigo */
 
-/* ==========================
-   Teaching — Sunlit, confident, academic
-   True Yellow + Azure + Indigo
-   ========================== */
+  --bar: #FFEE00;           /* true yellow */
+  --barText: #1F1F2E;
 
---bg: #F9F8F4;            /* warm paper, neutral */
---text: #1F1F2E;          /* deep indigo-charcoal */
---muted: #4A4A6F;         /* softened indigo */
+  --accent: #008FD5;        /* azure */
+  --accent-soft: #2B3A8F;   /* indigo */
 
-/* Navigation / structure */
---bar: #FFEE00;           /* TRUE yellow, slight warm lean */
---barText: #1F1F2E;
-
-/* Accents & links */
---accent: #008FD5;        /* crisp azure (not neon, not dull) */
---accent-soft: #2B3A8F;   /* strong academic indigo */
-
-/* Lines & image framing */
---line: rgba(31,31,46,.18);
---imgBorder: rgba(0,143,213,.35);
-
-
-
-
+  --line: rgba(31,31,46,.18);
+  --imgBorder: rgba(0,143,213,.35);
 }
 
-
-/* ==========================
-   Research — Deep underwater, analytical
-   Bold nav + bioluminescent accents
-   ========================== */
+/* Research: deep underwater + bright nav */
 body[data-track-theme="research"]{
-  --bg: #06131d;            /* deep ocean */
+  --bg: #06131d;
   --text: #EFF7FF;
   --muted: rgba(239,247,255,.72);
 
-  /* NAV BAR */
-  --bar: #0B2A3A;           /* deep ocean teal-blue (bold, not black) */
+  --bar: #0B2A3A;           /* bold deep-sea nav */
   --barText: #EFF7FF;
 
-  /* Accents */
   --accent: #00F5D4;        /* bioluminescent cyan */
   --accent-soft: #2D6BFF;   /* ocean azure */
-  --accent-deep: #2B3A8F;   /* indigo anchor */
+  --accent-deep: #2B3A8F;
 
   --line: rgba(0,245,212,.25);
   --imgBorder: rgba(0,245,212,.35);
 }
 
+/* Knitting: bold editorial */
+body[data-track-theme="knitting"]{
+  --bg: #F5F4F2;            /* warm gallery */
+  --text: #1E1E1E;
+  --muted: #6B6B6B;
+
+  --bar: #1E1E1E;           /* black header */
+  --barText: #F5F4F2;
+
+  --accent: #B100FF;        /* electric violet */
+  --accent-soft: #FFB000;   /* warm signal */
+
+  --line: rgba(30,30,30,.22);
+  --imgBorder: rgba(177,0,255,.45);
+}
+
+/* -------------------------
+   Reset + layout
+-------------------------- */
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 
@@ -73,7 +76,7 @@ main{
   padding: 26px var(--pad) 70px;
 }
 
-/* Links: clean but glowy on hover */
+/* Links */
 a{
   color: var(--accent);
   font-weight: 800;
@@ -83,28 +86,20 @@ a{
   text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent);
 }
 a:hover{
-  opacity: 1;
   text-decoration-color: var(--accent);
+  opacity: .95;
 }
 
-/* Header / nav: bold color + luminescent aura */
+/* -------------------------
+   Header / nav
+-------------------------- */
 .site-header{
   position: sticky;
   top: 0;
   z-index: 10;
   background: var(--bar);
   color: var(--barText);
-  border-bottom: 4px solid var(--accent); /* crisp, bright edge */
-
-}
-
-/* Teaching vs Research CTA emphasis */
-body[data-track-theme="teaching"] .hero-cta .button{
-  border-color: var(--text);
-}
-
-body[data-track-theme="research"] .hero-cta .button{
-  border-color: var(--accent);
+  border-bottom: 4px solid var(--accent);
 }
 
 .nav{
@@ -123,7 +118,6 @@ body[data-track-theme="research"] .hero-cta .button{
   letter-spacing: .2px;
   color: var(--barText);
   text-decoration: none;
-  text-shadow: 0 0 12px rgba(255,255,255,.12);
 }
 
 .nav-links{
@@ -145,9 +139,29 @@ body[data-track-theme="research"] .hero-cta .button{
 .nav-links a.is-hidden{ display:none; }
 .nav-links a.is-faded{ opacity:.45; pointer-events:none; }
 
-/* Hero */
+/* -------------------------
+   Hero
+-------------------------- */
 .hero{ padding: 26px 0 8px; }
-.hero-inner{ max-width: 88ch; }
+
+.hero-grid{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hero-photo img{
+  width: 120px;
+  height: 140px;            /* portrait */
+  object-fit: cover;
+  display:block;
+  border: 2px solid var(--imgBorder);
+}
+
+.hero-inner{
+  max-width: 88ch;
+}
 
 .hero h1{
   margin: 0 0 10px;
@@ -163,7 +177,6 @@ body[data-track-theme="research"] .hero-cta .button{
   font-weight: 520;
 }
 
-/* Toggle: flat, but with a tiny glow on active */
 /* Toggle: segmented control */
 .track-toggle{
   display: inline-flex;
@@ -172,56 +185,6 @@ body[data-track-theme="research"] .hero-cta .button{
   background: transparent;
   padding: 3px;
   gap: 0;
-}
-
-.hero-grid{
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.hero-photo img{
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border: 2px solid var(--imgBorder);
-}
-/* HERO: keep everything aligned left */
-.hero-inner{
-  position: relative;
-  max-width: 88ch;
-}
-
-.hero-photo{
-  float: none;
-  margin: 0;
-}
-
-
-.hero-photo img{
-  width: 120px;
-  height: 140px;         /* portrait feels nicer than square */
-  object-fit: cover;
-  border: 2px solid var(--imgBorder);
-}
-
-/* Mobile: photo centers above text */
-@media (max-width: 640px){
-  .hero-photo{
-    float: none;
-    margin: 0 0 12px 0;
-    width: 110px;
-  }
-  .hero-photo img{
-    width: 110px;
-    height: 128px;
-  }
-}
-
-@media (max-width: 640px){
-  .hero-grid{ grid-template-columns: 1fr; }
-  .hero-photo img{ width: 110px; height: 110px; }
 }
 
 .track-btn{
@@ -242,7 +205,8 @@ body[data-track-theme="research"] .hero-cta .button{
   background: var(--text);
   color: var(--bg);
 }
-/* CTA: sharp labels */
+
+/* CTA */
 .hero-cta{
   margin-top: 16px;
   display:flex;
@@ -269,12 +233,13 @@ body[data-track-theme="research"] .hero-cta .button{
   color: var(--muted);
 }
 
-/* Sections: clean panels + subtle glow bar */
+/* -------------------------
+   Sections
+-------------------------- */
 .section{
   margin-top: 56px;
   padding-top: 14px;
   border-top: 4px solid var(--line);
-  position: relative;
 }
 
 .section h2{
@@ -283,7 +248,7 @@ body[data-track-theme="research"] .hero-cta .button{
   font-weight: 950;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-     border-bottom: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
   display: inline-block;
   padding-bottom: 4px;
 }
@@ -295,173 +260,26 @@ body[data-track-theme="research"] .hero-cta .button{
   font-weight: 520;
   max-width: 92ch;
 }
-/* ==========================
-   Knitting & Commissions
-   Bold, graphic, editorial
-   ========================== */
-body[data-track-theme="knitting"]{
-  --bg: #F5F4F2;            /* warm gallery white */
-  --text: #1E1E1E;          /* near-black */
-  --muted: #6B6B6B;         /* neutral gray */
 
-  /* Navigation / structure */
-  --bar: #1E1E1E;           /* bold black header */
-  --barText: #F5F4F2;
-
-  /* Accent (bridges both sweaters) */
-  --accent: #B100FF;        /* electric violet (between fuchsia + blue) */
-  --accent-soft: #FFB000;   /* warm signal (between peach + yellow) */
-
-  /* Lines & image framing */
-  --line: rgba(30,30,30,.22);
-  --imgBorder: rgba(177,0,255,.45);
-
-}
-body[data-track-theme="knitting"] #knitting .gallery img{
-  height: 340px;
-}
-
-/* Placeholder block */
-.img-placeholder{
-  height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed var(--line);
-  color: var(--muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-
-.pub-card{
-  border: 2px solid var(--line);
-  padding: 16px;
-  margin-top: 14px;
-}
-
-.pub-badge{
-  display: inline-block;
-  font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  font-size: .8rem;
-  padding: 4px 8px;
-  border: 2px solid var(--line);
-  margin-bottom: 10px;
-}
-
-.pub-title{
-  margin: 0 0 8px;
-  font-weight: 950;
-}
-
-.pub-meta{
-  margin: 0 0 10px;
+.note{
   color: var(--muted);
   font-weight: 650;
+  font-size: .95rem;
 }
 
-.pub-blurb{
-  margin: 0 0 12px;
-  color: var(--muted);
-  font-weight: 520;
-  max-width: 92ch;
-}
-
-.pub-links{
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* Simple “card” areas (resume/contact): flat border */
+/* Cards / panels */
 .card{
   border: 2px solid var(--line);
   padding: 16px;
 }
 
-/* Lists */
-.beyond-list{ margin: 10px 0 0; padding-left: 18px; }
-.beyond-list li{ margin: 6px 0; }
-
-.metric-list{
-  margin: 8px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-  font-weight: 650;
-}
-
-.metric-list li{ margin: 6px 0; }
-
-/* Gallery: sharp photos + tiny glow on hover (not buttony) */
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.gallery figure{ margin: 0; }
-
-.gallery img{
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-  border: 2px solid var(--imgBorder);
-  border-radius: 0;
-}
-
-.gallery figcaption{
-  padding-top: 8px;
-  color: var(--muted);
-  font-size: .95rem;
-  font-weight: 700;
-}
-
-/* Origin photo: show full image, not huge */
-.gallery .gallery-feature img.origin-photo{
-  width: auto;
-  max-height: 420px;
-  height: auto;
-  object-fit: contain;
-  border: 2px solid var(--imgBorder);
-}
-
-/* Skills grid */
-.skills-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.skill-card{
+.panel{
   border: 2px solid var(--line);
   padding: 14px;
+  margin-top: 14px;
 }
-.skill-card h3{
-  margin: 0 0 8px;
-  font-weight: 950;
-}
-.skill-card ul{
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-.skill-card li{ margin: 6px 0; }
 
-/* Footer */
-.footer{
-  margin-top: 34px;
-  padding-top: 18px;
-  border-top: 2px solid var(--line);
-  color: var(--muted);
-  font-size: .95rem;
-}
-/* ---------- Layout helpers ---------- */
-
+/* Layout helpers */
 .metrics{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -495,11 +313,13 @@ body[data-track-theme="knitting"] #knitting .gallery img{
   font-size: .95rem;
 }
 
-.panel{
-  border: 2px solid var(--line);
-  padding: 14px;
-  margin-top: 14px;
+.metric-list{
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-weight: 650;
 }
+.metric-list li{ margin: 6px 0; }
 
 .two-col{
   display:grid;
@@ -558,8 +378,95 @@ body[data-track-theme="knitting"] #knitting .gallery img{
   letter-spacing: .02em;
 }
 
-/* ---------- Micro-animations (color shifts, no glow) ---------- */
+/* Publication */
+.pub-card{
+  border: 2px solid var(--line);
+  padding: 16px;
+  margin-top: 14px;
+}
 
+.pub-badge{
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  padding: 4px 8px;
+  border: 2px solid var(--line);
+  margin-bottom: 10px;
+}
+
+.pub-title{ margin: 0 0 8px; font-weight: 950; }
+
+.pub-meta{
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.pub-blurb{
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-weight: 520;
+  max-width: 92ch;
+}
+
+.pub-links{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.gallery figure{ margin: 0; }
+
+.gallery img{
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--imgBorder);
+  border-radius: 0;
+}
+
+.gallery figcaption{
+  padding-top: 8px;
+  color: var(--muted);
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+/* Feature images (origin / beyond knitting) */
+.gallery .gallery-feature img.origin-photo{
+  width: auto;
+  max-height: 420px;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid var(--imgBorder);
+}
+
+/* Knitting gallery slightly taller */
+body[data-track-theme="knitting"] #knitting .gallery img{
+  height: 340px;
+}
+
+/* Footer */
+.footer{
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 2px solid var(--line);
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* Micro animations (subtle) */
 .nav-links a{
   transition: border-color .18s ease, transform .18s ease, opacity .18s ease;
 }
@@ -583,14 +490,8 @@ body[data-track-theme="knitting"] #knitting .gallery img{
 }
 
 /* Section reveal animation */
-.section{
-  opacity: 1;
-  transform: none;
-}
-.section.reveal{
-  opacity: 0;
-  transform: translateY(8px);
-}
+.section{ opacity: 1; transform: none; }
+.section.reveal{ opacity: 0; transform: translateY(8px); }
 .section.reveal.is-visible{
   opacity: 1;
   transform: translateY(0);
@@ -608,3 +509,10 @@ body[data-track-theme="knitting"] #knitting .gallery img{
     transition: none !important;
   }
 }
+
+/* Mobile */
+@media (max-width: 640px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-photo img{ width: 110px; height: 128px; }
+}
+

@@ -576,11 +576,25 @@
       });
 
       // Show/hide sections
-      trackSections.forEach(sec => {
-        const secTrack = sec.dataset.track;
-        const show = (secTrack === "both") || (secTrack === safeTrack);
-        sec.style.display = show ? "" : "none";
-      });
+   trackSections.forEach(sec => {
+  const secTrack = sec.dataset.track;
+
+  // Default rule:
+  // - show sections for current track
+  // - show shared ("both") sections
+  let show = (secTrack === safeTrack) || (secTrack === "both");
+
+  // Special rule for knitting:
+  // - show knitting sections
+  // - show ONLY Contact from shared sections
+  // - hide Featured Publication + Origin Story (even though they are "both")
+  if (safeTrack === "knitting") {
+    show = (secTrack === "knitting") || (sec.id === "contact");
+  }
+
+  sec.style.display = show ? "" : "none";
+});
+
 
       // Tailor nav links
       navLinks.forEach(a => {

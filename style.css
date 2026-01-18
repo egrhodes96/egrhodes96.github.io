@@ -50,7 +50,7 @@ body[data-track-theme="knitting"]{
   --bar: #1E1E1E;           /* black header */
   --barText: #F5F4F2;
 
-  --accent: #B100FF;        /* electric violet */
+  --accent: #8800ff;        /* electric violet */
   --accent-soft: #FFB000;   /* warm signal */
 
   --line: rgba(30,30,30,.22);

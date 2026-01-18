@@ -193,12 +193,11 @@ body[data-track-theme="research"] .hero-cta .button{
   max-width: 88ch;
 }
 
-/* Photo floats without shifting the text start */
 .hero-photo{
-  float: right;
-  margin: 4px 0 12px 16px;
-  width: 120px;
+  float: none;
+  margin: 0;
 }
+
 
 .hero-photo img{
   width: 120px;

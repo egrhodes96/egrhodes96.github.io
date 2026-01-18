@@ -56,6 +56,20 @@ body[data-track-theme="knitting"]{
   --line: rgba(30,30,30,.22);
   --imgBorder: rgba(90, 0, 221, 0.48);
 }
+/* Fix knitting hero layout when photo is hidden */
+body[data-track-theme="knitting"] .hero-grid {
+  grid-template-columns: 1fr;
+}
+/* Hide email button on knitting page */
+body[data-track-theme="knitting"] #email-link {
+  display: none;
+}
+body[data-track-theme="knitting"] .hero-cta {
+  margin-top: 8px;
+}
+body[data-track-theme="knitting"] .hero-cta {
+  display: none;
+}
 
 
 /* -------------------------

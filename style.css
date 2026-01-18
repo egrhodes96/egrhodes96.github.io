@@ -320,6 +320,9 @@ body[data-track-theme="knitting"]{
   --imgBorder: rgba(177,0,255,.45);
 
 }
+body[data-track-theme="knitting"] #knitting .gallery img{
+  height: 340px;
+}
 
 /* Placeholder block */
 .img-placeholder{

@@ -299,22 +299,26 @@ body[data-track-theme="research"] .hero-cta .button{
   max-width: 92ch;
 }
 /* ==========================
-   Knitting track
+   Knitting & Commissions
+   Bold, graphic, editorial
    ========================== */
-
 body[data-track-theme="knitting"]{
-  --bg: #F6F3F8;        /* soft neutral */
-  --text: #2D2D2A;
-  --muted: #6B6B6B;
+  --bg: #F5F4F2;            /* warm gallery white */
+  --text: #1E1E1E;          /* near-black */
+  --muted: #6B6B6B;         /* neutral gray */
 
-  --bar: #8E7C93;       /* muted plum */
-  --barText: #ffffff;
+  /* Navigation / structure */
+  --bar: #1E1E1E;           /* bold black header */
+  --barText: #F5F4F2;
 
-  --accent: #C084FC;    /* gentle violet */
-  --accent-soft: #6D28D9;
+  /* Accent (bridges both sweaters) */
+  --accent: #B100FF;        /* electric violet (between fuchsia + blue) */
+  --accent-soft: #FFB000;   /* warm signal (between peach + yellow) */
 
-  --line: rgba(109,40,217,.25);
-  --imgBorder: rgba(109,40,217,.35);
+  /* Lines & image framing */
+  --line: rgba(30,30,30,.22);
+  --imgBorder: rgba(177,0,255,.45);
+
 }
 
 /* Placeholder block */

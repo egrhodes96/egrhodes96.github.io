@@ -57,8 +57,6 @@ body[data-track-theme="research"]{
   --imgBorder: rgba(0,245,212,.35);
 }
 
-}
-
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 

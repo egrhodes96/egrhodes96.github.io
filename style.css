@@ -54,7 +54,7 @@ body[data-track-theme="knitting"]{
   --accent-soft: #FFB000;   /* warm signal */
 
   --line: rgba(30,30,30,.22);
-  --imgBorder: rgba(177,0,255,.45);
+  --imgBorder: rgba(90, 0, 221, 0.48);
 }
 
 /* -------------------------

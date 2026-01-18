@@ -298,6 +298,38 @@ body[data-track-theme="research"] .hero-cta .button{
   font-weight: 520;
   max-width: 92ch;
 }
+/* ==========================
+   Knitting track
+   ========================== */
+
+body[data-track-theme="knitting"]{
+  --bg: #F6F3F8;        /* soft neutral */
+  --text: #2D2D2A;
+  --muted: #6B6B6B;
+
+  --bar: #8E7C93;       /* muted plum */
+  --barText: #ffffff;
+
+  --accent: #C084FC;    /* gentle violet */
+  --accent-soft: #6D28D9;
+
+  --line: rgba(109,40,217,.25);
+  --imgBorder: rgba(109,40,217,.35);
+}
+
+/* Placeholder block */
+.img-placeholder{
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--line);
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
 .pub-card{
   border: 2px solid var(--line);
   padding: 16px;

@@ -57,6 +57,7 @@ body[data-track-theme="knitting"]{
   --imgBorder: rgba(90, 0, 221, 0.48);
 }
 
+
 /* -------------------------
    Reset + layout
 -------------------------- */
@@ -68,6 +69,23 @@ body{
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
+}
+/* Compact hero for knitting */
+body[data-track-theme="knitting"] .hero {
+  padding: 12px 0 4px;
+}
+
+body[data-track-theme="knitting"] .hero h1 {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  margin-bottom: 6px;
+}
+
+body[data-track-theme="knitting"] .hero p {
+  font-size: 1rem;
+  max-width: 60ch;
+}
+body[data-track-theme="knitting"] .hero-photo {
+  display: none;
 }
 
 main{

@@ -27,24 +27,6 @@
 
  /* Research — Deep Green Studio */
 body[data-track-theme="research"]{
---bg: #0f1f17;
---text: #e6f2ea;
---muted: rgba(230,242,234,.72);
-
---bar: #162c22;
---panel: #162c22;
-
---accent: #3cb371;    /* medium sea green */
---accent2: #88c9a1;   /* lighter green */
-
---chip: rgba(230,242,234,.10);
---line: rgba(60,179,113,.28);
---imgBorder: rgba(60,179,113,.35);
-}
-
-/* Knitting: bold editorial */
-body[data-track-theme="knitting"]{
-  /* Knitting — Electric Editorial */
 --bg: #0e0e10;
 --text: #f5f5f5;
 --muted: rgba(245,245,245,.72);
@@ -59,6 +41,8 @@ body[data-track-theme="knitting"]{
 --line: rgba(255,212,0,.28);
 --imgBorder: rgba(255,46,99,.40);
 }
+
+
 
 
 /* -------------------------

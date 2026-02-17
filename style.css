@@ -9,52 +9,55 @@
   --max: 1050px;
   --pad: 18px;
 
-  /* Teaching: True yellow + azure + indigo */
-  --bg: #F9F8F4;            /* warm paper */
-  --text: #1F1F2E;          /* deep indigo-charcoal */
-  --muted: #4A4A6F;         /* softened indigo */
+  /* Teaching — Pop Graphic */
+--bg: #ffffff;
+--text: #111111;
+--muted: rgba(17,17,17,.72);
 
-  --bar: #FFEE00;           /* true yellow */
-  --barText: #1F1F2E;
+--bar: #f3f3f3;
+--panel: #f3f3f3;
 
-  --accent: #008FD5;        /* azure */
-  --accent-soft: #2B3A8F;   /* indigo */
+--accent: #ff6b00;    /* orange */
+--accent2: #0057ff;   /* electric blue */
 
-  --line: rgba(31,31,46,.18);
-  --imgBorder: rgba(0,143,213,.35);
+--chip: rgba(17,17,17,.08);
+--line: rgba(17,17,17,.18);
+--imgBorder: rgba(0,87,255,.35);
 }
 
-/* Research: deep underwater + bright nav */
+ /* Research — Deep Green Studio */
 body[data-track-theme="research"]{
-  --bg: #06131d;
-  --text: #EFF7FF;
-  --muted: rgba(239,247,255,.72);
+--bg: #0f1f17;
+--text: #e6f2ea;
+--muted: rgba(230,242,234,.72);
 
-  --bar: #0B2A3A;           /* bold deep-sea nav */
-  --barText: #EFF7FF;
+--bar: #162c22;
+--panel: #162c22;
 
-  --accent: #00F5D4;        /* bioluminescent cyan */
-  --accent-soft: #2D6BFF;   /* ocean azure */
-  --accent-deep: #2B3A8F;
+--accent: #3cb371;    /* medium sea green */
+--accent2: #88c9a1;   /* lighter green */
 
-  --line: rgba(0,245,212,.25);
-  --imgBorder: rgba(0,245,212,.35);
+--chip: rgba(230,242,234,.10);
+--line: rgba(60,179,113,.28);
+--imgBorder: rgba(60,179,113,.35);
 }
 
 /* Knitting: bold editorial */
 body[data-track-theme="knitting"]{
-  --bg: #F5F4F2;            /* warm gallery */
-  --text: #1E1E1E;
-  --muted: #6B6B6B;
+  /* Knitting — Electric Editorial */
+--bg: #0e0e10;
+--text: #f5f5f5;
+--muted: rgba(245,245,245,.72);
 
-  --bar: #1E1E1E;           /* black header */
-  --barText: #F5F4F2;
+--bar: #1c1c22;
+--panel: #1c1c22;
 
-  --accent: #8800ff;        /* electric violet */
-  --accent-soft: #FFB000;   /* warm signal */
+--accent: #ff2e63;    /* raspberry */
+--accent2: #ffd400;   /* yellow */
 
-  --line: rgba(30,30,30,.22);
-  --imgBorder: rgba(90, 0, 221, 0.48);
+--chip: rgba(245,245,245,.10);
+--line: rgba(255,212,0,.28);
+--imgBorder: rgba(255,46,99,.40);
 }
 
 
